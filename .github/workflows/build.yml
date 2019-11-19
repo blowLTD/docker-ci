@@ -15,7 +15,7 @@ jobs:
     - uses: actions/checkout@v1
     - name: Build docker image
       run: |
-        gsed -i "s/\$NODE_VERSION/$NODE_VERSION/" Dockerfile
+        sed -i "s/\$NODE_VERSION/$NODE_VERSION/" Dockerfile
         BRANCH=$(echo ${GITHUB_REF} | sed -e "s/refs\/heads\///g" | sed -e "s/refs\/tags\///g")
         docker login -u $DOCKER_USER -p $DOCKER_TOKEN $DOCKER_REGISTRY
         docker build -t $DOCKER_REGISTRY/$DOCKER_REPOSITORY/$DOCKER_IMAGE:$BRANCH .
