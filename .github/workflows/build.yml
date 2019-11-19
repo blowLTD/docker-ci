@@ -17,15 +17,12 @@ jobs:
       run: |
         sed -i "s/\$NODE_VERSION/$NODE_VERSION/" Dockerfile
         BRANCH=$(echo ${GITHUB_REF} | sed -e "s/refs\/heads\///g" | sed -e "s/refs\/tags\///g")
+        TAG="node-$NODE_VERSION"
         docker login -u $DOCKER_USER -p $DOCKER_TOKEN $DOCKER_REGISTRY
-        docker build -t $DOCKER_REGISTRY/$DOCKER_REPOSITORY/$DOCKER_IMAGE:$BRANCH .
-        docker push $DOCKER_REGISTRY/$DOCKER_REPOSITORY/$DOCKER_IMAGE:$BRANCH
-        [[ "$BRANCH" == "master" ]] || exit 0;
-        docker tag $DOCKER_REGISTRY/$DOCKER_REPOSITORY/$DOCKER_IMAGE:$BRANCH $DOCKER_REGISTRY/$DOCKER_REPOSITORY/$DOCKER_IMAGE:latest
-        docker push $DOCKER_REGISTRY/$DOCKER_REPOSITORY/$DOCKER_IMAGE:latest
+        [[ "$BRANCH" != "master" ]] && TAG="$TAG-$BRANCH"
+        docker build -t $DOCKER_REGISTRY/$DOCKER_REPOSITORY/$DOCKER_IMAGE:$TAG .
+        docker push $DOCKER_REGISTRY/$DOCKER_REPOSITORY/$DOCKER_IMAGE:$TAG
       env:
-        #DOCKER_REGISTRY: docker.pkg.github.com
-        #DOCKER_REPOSITORY: ${{ github.repository }}
         DOCKER_REGISTRY: registry.hub.docker.com
         DOCKER_REPOSITORY: blowltd
         DOCKER_IMAGE: docker-ci
