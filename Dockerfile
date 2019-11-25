@@ -8,5 +8,3 @@ RUN apk --no-cache add ca-certificates wget && \
 RUN npm install -g npm@6.4.1
 RUN npm install -g serverless@1.57.0
 RUN npm install -g github-release-notes@0.17.0
-
-USER 1000
