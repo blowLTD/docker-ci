@@ -5,7 +5,7 @@ RUN apk --no-cache add ca-certificates wget && \
     wget https://github.com/sgerrand/alpine-pkg-glibc/releases/download/2.28-r0/glibc-2.28-r0.apk && \
     apk add glibc-2.28-r0.apk 
     
-RUN apk add --no-cache git
+RUN apk add --no-cache git bash
 
 RUN npm install -g \
     npm@6.4.1 \
