@@ -6,6 +6,7 @@ RUN apk --no-cache add ca-certificates wget && \
     apk add glibc-2.28-r0.apk 
     
 RUN apk add --no-cache git bash
+RUN apk add --no-cache zip unzip
 
 RUN npm install -g \
     npm@6.4.1 \
