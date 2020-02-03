@@ -8,6 +8,7 @@ RUN apk --no-cache add ca-certificates wget && \
 RUN apk add --no-cache git bash
 RUN apk add --no-cache zip unzip
 
+RUN npm config set unsafe-perm true
 RUN npm install -g \
     npm@6.4.1 \
     serverless@1.60.5 \
