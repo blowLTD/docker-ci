@@ -13,3 +13,4 @@ RUN npm install -g \
     npm@6.4.1 \
     serverless@1.60.5 \
     github-release-notes@0.17.0
+    if-env@1.0.4
