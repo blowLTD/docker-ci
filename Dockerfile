@@ -7,7 +7,7 @@ RUN apk --no-cache add ca-certificates wget && \
     
 RUN apk add --no-cache git bash
 RUN apk add --no-cache zip unzip
-RUN apk --no-cache add g++ gcc libgcc libstdc++ linux-headers make python
+RUN apk add --no-cache make gcc g++ python pkgconfig pixman-dev cairo-dev pango-dev libjpeg-turbo-dev giflib-dev
 
 RUN npm config set unsafe-perm true
 RUN npm install -g \
