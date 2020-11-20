@@ -8,7 +8,7 @@ RUN apk --no-cache add ca-certificates wget && \
 RUN apk add --no-cache git bash
 RUN apk add --no-cache zip unzip
 RUN apk add --no-cache make gcc g++ python pkgconfig pixman-dev cairo-dev pango-dev libjpeg-turbo-dev giflib-dev
-RUN apk -Uuv add groff less python3 py-pip && pip install awscl
+RUN apk -Uuv add groff less python3 py-pip && pip install awscli
     
 RUN npm config set unsafe-perm true
 RUN npm install -g \
